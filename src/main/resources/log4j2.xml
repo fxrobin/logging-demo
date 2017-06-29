@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+	<Appenders>
+		<File name="InfoFile" fileName="/tmp/logdemo/logdemo_info.log">
+			<PatternLayout>
+				<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+			</PatternLayout>
+		</File>
+		<Async name="AsyncInfo">
+			<AppenderRef ref="InfoFile" />
+		</Async>
+		
+		<File name="ErrorFile" fileName="/tmp/logdemo/logdemo_error.log">
+			<PatternLayout>
+				<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+			</PatternLayout>
+		</File>
+		<Async name="AsyncError">
+			<AppenderRef ref="ErrorFile" />
+		</Async>		
+	</Appenders>
+	
+	<Loggers>
+		<Root level="info">
+			<AppenderRef ref="AsyncInfo" level="INFO" />
+			<AppenderRef ref="AsyncError" level="ERROR" />
+		</Root>
+	</Loggers>
+	
+</Configuration>
